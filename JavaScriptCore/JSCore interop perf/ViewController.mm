@@ -12,7 +12,7 @@
     UIView* view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 100, 100)];
     view.backgroundColor = UIColor.redColor;
     
-    runJSCore();
+    runJSCoreTest();
     
     [self.view addSubview: view];
 }

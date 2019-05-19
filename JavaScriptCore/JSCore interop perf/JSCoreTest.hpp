@@ -13,7 +13,7 @@ JSValueRef ObjectCallAsFunctionCallback(JSContextRef ctx, JSObjectRef function, 
     return JSValueMakeUndefined(ctx);
 }
 
-int runJSCore() {
+int runJSCoreTest() {
     // Create JSCore VM
     JSContextGroupRef contextGroup = JSContextGroupCreate();
     // Create global context
@@ -27,26 +27,31 @@ int runJSCore() {
     
     JSObjectSetProperty(globalContext, globalObject, logFunctionName, functionObject, kJSPropertyAttributeNone, nullptr);
     
-    unsigned run_count = 15000;
-    
-    std::string str = "for (var i = 0; i < " + std::to_string(run_count) + "; i++) log()";
-    JSStringRef logCallStatement = JSStringCreateWithUTF8CString(str.c_str());
+    unsigned run_count = 0;
 
-    // Perf
-    NSDate *methodStart = [NSDate date];
+    for (int i = 0; i < 30; i++) {
+        run_count += 3000;
+        std::string str = "for (var i = 0; i < " + std::to_string(run_count) + "; i++) log(i)";
+        JSStringRef logCallStatement = JSStringCreateWithUTF8CString(str.c_str());
+        
+        // Perf
+        NSDate *methodStart = [NSDate date];
+        
+        JSEvaluateScript(globalContext, logCallStatement, nullptr, nullptr, 1,nullptr);
+        
+        NSDate *methodFinish = [NSDate date];
+        NSTimeInterval executionTime = [methodFinish timeIntervalSinceDate:methodStart];
+        NSLog(@"run %u times executionTime = %fms", run_count, executionTime * 1000 / run_count);
+        
+        JSStringRelease(logCallStatement);
+    }
     
-    JSEvaluateScript(globalContext, logCallStatement, nullptr, nullptr, 1,nullptr);
-    
-    NSDate *methodFinish = [NSDate date];
-    NSTimeInterval executionTime = [methodFinish timeIntervalSinceDate:methodStart];
-    NSLog(@"executionTime = %fms", executionTime * 1000 / run_count);
     
     /* memory management code to prevent memory leaks */
     
     JSGlobalContextRelease(globalContext);
     JSContextGroupRelease(contextGroup);
     JSStringRelease(logFunctionName);
-    JSStringRelease(logCallStatement);
     
     return 0;
 }

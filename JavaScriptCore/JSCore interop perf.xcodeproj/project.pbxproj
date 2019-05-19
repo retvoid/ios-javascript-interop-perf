@@ -14,6 +14,11 @@
 		07113507229034BE0097BA52 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 07113505229034BE0097BA52 /* LaunchScreen.storyboard */; };
 		0711350A229034BE0097BA52 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 07113509229034BE0097BA52 /* main.m */; };
 		07113515229036E10097BA52 /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07113514229036E10097BA52 /* JavaScriptCore.framework */; };
+		07757DCF22904E7C0099CD3B /* libv8_monolith.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 07757DCD22904E6A0099CD3B /* libv8_monolith.a */; };
+		07757DDB229050BC0099CD3B /* v8 in Resources */ = {isa = PBXBuildFile; fileRef = 07757DDA229050BC0099CD3B /* v8 */; };
+		07757DDC229050C10099CD3B /* v8 in Sources */ = {isa = PBXBuildFile; fileRef = 07757DDA229050BC0099CD3B /* v8 */; };
+		07757DDF229053370099CD3B /* libv8_libbase.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 07757DDD229053370099CD3B /* libv8_libbase.a */; };
+		07757DE0229053370099CD3B /* libv8_libplatform.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 07757DDE229053370099CD3B /* libv8_libplatform.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +34,11 @@
 		07113509229034BE0097BA52 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		07113511229036820097BA52 /* JSCoreTest.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = JSCoreTest.hpp; sourceTree = "<group>"; };
 		07113514229036E10097BA52 /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
+		07757DCB22904BFA0099CD3B /* libv8_monolith.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libv8_monolith.a; path = "../../../v8/v8/out/release-ios/obj/libv8_monolith.a"; sourceTree = "<group>"; };
+		07757DCD22904E6A0099CD3B /* libv8_monolith.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libv8_monolith.a; sourceTree = "<group>"; };
+		07757DDA229050BC0099CD3B /* v8 */ = {isa = PBXFileReference; lastKnownFileType = folder; path = v8; sourceTree = "<group>"; };
+		07757DDD229053370099CD3B /* libv8_libbase.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libv8_libbase.a; path = "JSCore interop perf/libv8_libbase.a"; sourceTree = "<group>"; };
+		07757DDE229053370099CD3B /* libv8_libplatform.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libv8_libplatform.a; path = "JSCore interop perf/libv8_libplatform.a"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -36,6 +46,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				07757DDF229053370099CD3B /* libv8_libbase.a in Frameworks */,
+				07757DE0229053370099CD3B /* libv8_libplatform.a in Frameworks */,
+				07757DCF22904E7C0099CD3B /* libv8_monolith.a in Frameworks */,
 				07113515229036E10097BA52 /* JavaScriptCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -63,6 +76,8 @@
 		071134F9229034BD0097BA52 /* JSCore interop perf */ = {
 			isa = PBXGroup;
 			children = (
+				07757DDA229050BC0099CD3B /* v8 */,
+				07757DCD22904E6A0099CD3B /* libv8_monolith.a */,
 				071134FA229034BD0097BA52 /* AppDelegate.h */,
 				071134FB229034BD0097BA52 /* AppDelegate.m */,
 				071134FD229034BD0097BA52 /* ViewController.h */,
@@ -80,6 +95,9 @@
 		07113513229036E10097BA52 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				07757DDD229053370099CD3B /* libv8_libbase.a */,
+				07757DDE229053370099CD3B /* libv8_libplatform.a */,
+				07757DCB22904BFA0099CD3B /* libv8_monolith.a */,
 				07113514229036E10097BA52 /* JavaScriptCore.framework */,
 			);
 			name = Frameworks;
@@ -142,6 +160,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				07757DDB229050BC0099CD3B /* v8 in Resources */,
 				07113507229034BE0097BA52 /* LaunchScreen.storyboard in Resources */,
 				07113504229034BE0097BA52 /* Assets.xcassets in Resources */,
 				07113502229034BD0097BA52 /* Main.storyboard in Resources */,
@@ -155,6 +174,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				07757DDC229050C10099CD3B /* v8 in Sources */,
 				071134FF229034BD0097BA52 /* ViewController.mm in Sources */,
 				0711350A229034BE0097BA52 /* main.m in Sources */,
 				071134FC229034BD0097BA52 /* AppDelegate.m in Sources */,
@@ -306,6 +326,13 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/JSCore\\ interop\\ perf",
+					"$(PROJECT_DIR)/JSCore\\ interop\\ perf",
+					"$(PROJECT_DIR)/JSCore\\ interop\\ perf",
+					"$(PROJECT_DIR)/JSCore\\ interop\\ perf",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "cc.retvoid.JSCore-interop-perf";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -322,6 +349,13 @@
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/JSCore\\ interop\\ perf",
+					"$(PROJECT_DIR)/JSCore\\ interop\\ perf",
+					"$(PROJECT_DIR)/JSCore\\ interop\\ perf",
+					"$(PROJECT_DIR)/JSCore\\ interop\\ perf",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "cc.retvoid.JSCore-interop-perf";
 				PRODUCT_NAME = "$(TARGET_NAME)";
